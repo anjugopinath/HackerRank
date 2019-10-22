@@ -1,0 +1,34 @@
+void reversePrint(SinglyLinkedListNode* head)
+ {
+
+    SinglyLinkedListNode* prev;
+    SinglyLinkedListNode* curr;
+    SinglyLinkedListNode* next;
+
+    prev=head;
+    if(head->next!=NULL)
+        curr=head->next;
+    else 
+    {
+        cout<<head->data;return;
+    }
+    if(curr->next!=NULL)
+        next=curr->next;
+    else
+    {
+        cout<<curr->data<<"\n"<<head->data;return;
+    }
+    head->next=NULL;
+    while(next->next!=NULL)
+    {
+        curr->next=prev;prev=curr;curr=next;next=next->next;
+    }
+    curr->next=prev;next->next=curr;
+
+    head=next;
+    while(head!=NULL)
+    {
+        cout<<head->data<<"\n";head=head->next;
+    }
+
+}
